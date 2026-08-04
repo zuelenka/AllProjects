@@ -1,31 +1,63 @@
 package base;
 
+//Класс, в котором указываем параметры (переменные) будущего объекта, но без конкретных значений
 public class StudentProfile {
+    byte estimation;
+    short studentId;
+    int yearOfBirth;
+    long phoneNumber;
+    float semesterAssessment;
+    double finalAssessment;
+    boolean isTuitionPaid;
+    char nameInitial;
 
-    static byte estimation = 5;
-    static short studentId = 597;
-    static int yearOfBirth = 1990;
-    static long phoneNumber = 89081457420L;
-    static float semesterAssessment = 4.7f;
-    static double finalAssessment = 4.63;
-    static boolean isTuitionPaid = true;
-    static char nameInitial = 'E';
+    //Конструктор с одноименным классу названием, в теле которого указаны все переменные
+    public StudentProfile(byte estimation,
+                          short studentId,
+                          int yearOfBirth,
+                          long phoneNumber,
+                          float semesterAssessment,
+                          double finalAssessment,
+                          boolean isTuitionPaid,
+                          char nameInitial) {
+        //переменным класса присваиваем переменные конструктора
+        this.estimation = estimation;
+        this.studentId = studentId;
+        this.yearOfBirth = yearOfBirth;
+        this.phoneNumber = phoneNumber;
+        this.semesterAssessment = semesterAssessment;
+        this.finalAssessment = finalAssessment;
+        this.isTuitionPaid = isTuitionPaid;
+        this.nameInitial = nameInitial;
+    }
 
+    //Методом toString выводим информацию
+    public String toString() {
+        return "ИНФОРМАЦИЯ О СТУДЕНТЕ:\n" +
+                "Личные данные студента:\n" +
+                "Первая буква имени: " + nameInitial + "\n" +
+                "Год рождения: " + yearOfBirth + "\n" +
+                "Номер телефона: " + phoneNumber + "\n" +
+                "Учебные данные студента:" + "\n" +
+                "Номер студенческого билета: " + studentId + "\n" +
+                "Оценка: " + estimation + " баллов" + "\n" +
+                String.format("Средний балл за семестр: %.2f%n", semesterAssessment) +
+                String.format("Итоговый балл: %.2f%n", finalAssessment) +
+                "Оплачено обучение? " + (isTuitionPaid ? "Да" : "Нет") + "\n";
+    }
+
+    //В main задаем данные конкретного студента и выводим на печать
     public static void main(String[] args) {
-        System.out.println();
-        System.out.println("ИНФОРМАЦИЯ О СТУДЕНТЕ:");
-        System.out.println();
-        System.out.println("Личные данные студента:");
-        System.out.println("Первая буква имени: " + nameInitial);
-        System.out.println("Год рождения: " + yearOfBirth);
-        System.out.println("Номер телефона: " + phoneNumber);
-        System.out.println();
-        System.out.println("Учебные данные студента:");
-        System.out.println("Номер студенческого билета: " + studentId);
-        System.out.println("Оценка: " + estimation + " баллов");
-        System.out.printf("Средний балл за семестр: %.2f%n", semesterAssessment);
-        System.out.printf("Итоговый балл: %.2f%n", finalAssessment);
-        System.out.println("Оплачено обучение? " + (isTuitionPaid ? "Да" : "Нет"));
-        System.out.println();
+        StudentProfile student = new StudentProfile(
+                (byte) 5,              //estimation
+                (short) 597,           //studentId
+                1990,                  //yearOfBirth
+                89081457420L,          //phoneNumber
+                4.7f,                  //semesterAssessment
+                4.63,                  //finalAssessment
+                true,                  //isTuitionPaid
+                'E'                    //nameInitial
+        );
+        System.out.println(student);
     }
 }

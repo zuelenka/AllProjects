@@ -2,13 +2,13 @@ package base;
 
 public class Overflow {
 
-    static int maxIntValue = Integer.MAX_VALUE;
-    //Количество секунд в 100 годах (с переполнением)
-    static int secondsIn100YearsInt = 100 * 365 * 24 * 60 * 60;
-    //Количество секунд в 100 годах (без переполнения)
-    static long secondsIn100YearsLong = 100L * 365 * 24 * 60 * 60;
-
     public static void main(String[] args) {
+        int maxIntValue = Integer.MAX_VALUE;
+        //Количество секунд в 100 годах (с переполнением)
+        int secondsIn100YearsInt = 100 * 365 * 24 * 60 * 60;
+        //Количество секунд в 100 годах (без переполнения)
+        long secondsIn100YearsLong = 100L * 365 * 24 * 60 * 60;
+
         //Вывод максимального значения int
         System.out.println("Максимальное значение int:");
         System.out.println("Integer.MAX_VALUE = " + maxIntValue);
