@@ -4,14 +4,20 @@ public class GuessGame {
 
     public static void main(String[] args) {
         int secret = 42;
-        int guess = 70;  // изменяемое число
+        int guess = 37;//изменяемое число
 
-        if (guess < secret) {
-            System.out.println("Меньше");
-        } else if (guess > secret) {
-            System.out.println("Больше");
+        // Выводим результат проверки через метод
+        System.out.println(checkGuess(guess, secret));
+    }
+
+    //Проверяем загаданное число через метод
+    public static String checkGuess(int guess, int secret) {
+        if (guess < secret) { //если введенное меньше секретного
+            return "Меньше";
+        } else if (guess > secret) { //если введенное больше секретного
+            return "Больше";
         } else {
-            System.out.println("Угадал! Это 42");
+            return "Угадал! Это " + secret;
         }
     }
 }
