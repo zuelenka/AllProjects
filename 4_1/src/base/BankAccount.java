@@ -87,7 +87,7 @@ public class BankAccount {
         System.out.println("==========================");
     }
 
-    //Статическое поле totalAccounts считает сколько счетов было создано.
+    //Статический метод totalAccounts: считает, сколько счетов было создано.
     public static void printTotalAccounts() {
         System.out.println("Всего создано счетов: " + totalAccounts);
     }
