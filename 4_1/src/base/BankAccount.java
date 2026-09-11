@@ -1,13 +1,13 @@
 package base;
 
-//Объявляем класс с полями: номер счёта (String), владелец (String), баланс (double).
+//Объявляем класс с private полями: номер счёта (String), владелец (String), баланс (double).
 public class BankAccount {
     //Нестатические поля (у каждого объекта свои).
-    String accountNumber;
-    String owner;
-    double balance;
+    private final String accountNumber;
+    private String owner;
+    private double balance;
     //Статическое поле (одно для всех объектов).
-    static int totalAccounts = 0;
+    private static int totalAccounts = 0;
 
     public BankAccount(String accountNumber, String owner, double balance) {
         this.accountNumber = accountNumber;
@@ -24,15 +24,12 @@ public class BankAccount {
 
         account1.deposit(100);
         account1.withdraw(450);
-        account1.getBalance();
         account1.printStatement();
         account2.deposit(200);
         account2.withdraw(200);
-        account2.getBalance();
         account2.printStatement();
         account3.deposit(300);
         account3.withdraw(300);
-        account3.getBalance();
         account3.printStatement();
         printTotalAccounts();
     }
@@ -70,10 +67,6 @@ public class BankAccount {
 
     //Метод getBalance: возвращает текущий баланс.
     public double getBalance() {
-        System.out.println("Информация о текущем балансе");
-        System.out.printf("Баланс: %.2f руб. %n",
-                balance);
-        System.out.println("==========================");
         return balance;
     }
 
@@ -83,7 +76,7 @@ public class BankAccount {
         System.out.println("Номер счёта: " + accountNumber);
         System.out.println("Владелец: " + owner);
         System.out.printf("Баланс: %.2f руб. %n",
-                balance);
+                getBalance());
         System.out.println("==========================");
     }
 
