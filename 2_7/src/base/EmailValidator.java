@@ -60,23 +60,21 @@ public class EmailValidator {
         return true; //в остальных случаях адрес валидный
     }
 
-
     public static void main(String[] args) {
         System.out.println("1) null: " + isValidEmail(null)); //false (null)
         System.out.println("1) пустая строка: " + isValidEmail("")); //false (пустая строка)
         System.out.println("1) пробел: zu elenka@gmail.com: " + isValidEmail("zu elenka@gmail.com")); //false (пробел)
         System.out.println("2) отсутствие @: zuelenka.gmail.com: " + isValidEmail("zuelenka.gmail.com"));   //false (нет @)
         System.out.println("2) неправильное расположение@: @zuelenka.gmail.com: " + isValidEmail("@zuelenka.gmail.com"));   //false (@ c начала строки)
-        System.out.println("2) наличие больше 1 @: zuel@enka@gmail.com: " + isValidEmail("zuel@enka@gmail.com")); // false (@ больше 1)
-        System.out.println("3) проверка на пустоту и недопустимые символы до @: zuel%enka@gmail.com: " + isValidEmail("zuel%enka@gmail.com")); // false (%))
-        System.out.println("3) проверка на пустоту и недопустимые символы после @: zuelenka@g#mail.com: " + isValidEmail("zuelenka@g#mail.com")); // false (#)
-        System.out.println("4) проверка на наличие в начале -: -zuelenka@gmail.com " + isValidEmail("-zuelenka@gmail.com")); // false (-)
-        System.out.println("4) проверка на наличие в конце -: zuelenka@gmail.com- " + isValidEmail("zuelenka@gmail.com-")); // false (-)
-        System.out.println("5) проверка на наличие .. : zuelenka@gmail..com " + isValidEmail("zuelenka@gmail..com")); // false (..)
+        System.out.println("2) наличие больше 1 @: zuel@enka@gmail.com: " + isValidEmail("zuel@enka@gmail.com")); //false (@ больше 1)
+        System.out.println("3) проверка на пустоту и недопустимые символы после @: zuelenka@g#mail.com: " + isValidEmail("zuelenka@g#mail.com")); //false (#)
+        System.out.println("4) проверка на наличие в начале -: -zuelenka@gmail.com " + isValidEmail("-zuelenka@gmail.com")); //false (-)
+        System.out.println("4) проверка на наличие в конце -: zuelenka@gmail.com- " + isValidEmail("zuelenka@gmail.com-")); //false (-)
+        System.out.println("5) проверка на наличие .. : zuelenka@gmail..com " + isValidEmail("zuelenka@gmail..com")); //false (..)
         System.out.println("6) проверка правильности расположения . : zuelenka.@gmail: " + isValidEmail("zuelenka.@gmail")); //false (точка до @)
         System.out.println("6) проверка правильности расположения . : zuelenka@gmailcom: " + isValidEmail("zuelenka@gmailcom")); //false (нет точки)
         System.out.println("6) проверка правильности расположения . : zuelenka@.com: " + isValidEmail("zuelenka@.com")); //false (точка сразу после @)
-        System.out.println("7) проверка наличия букв после . : zuelenka@. : " + isValidEmail("zuelenka@.")); //false (нет букв после .)
+        System.out.println("7) проверка наличия букв после . : zuelenka@. : " + isValidEmail("zuelenka@.")); //false (нет букв после . )
         System.out.println("8) проверка на недопустимые символы после . " + isValidEmail("zuelenka@.co$")); //false (после . $)
         System.out.println("zuelenka@gmail.com: " + isValidEmail("zuelenka@gmail.com")); //true
     }
