@@ -74,7 +74,7 @@ public class EmailValidator {
         System.out.println("6) проверка правильности расположения . : zuelenka.@gmail: " + isValidEmail("zuelenka.@gmail")); //false (точка до @)
         System.out.println("6) проверка правильности расположения . : zuelenka@gmailcom: " + isValidEmail("zuelenka@gmailcom")); //false (нет точки)
         System.out.println("6) проверка правильности расположения . : zuelenka@.com: " + isValidEmail("zuelenka@.com")); //false (точка сразу после @)
-        System.out.println("7) проверка наличия букв после . : zuelenka@. : " + isValidEmail("zuelenka@.")); //false (нет букв после . )
+        System.out.println("7) проверка наличия букв после . : zuelenka@. : " + isValidEmail("zuelenka@.")); //false (нет букв после .)
         System.out.println("8) проверка на недопустимые символы после . " + isValidEmail("zuelenka@.co$")); //false (после . $)
         System.out.println("zuelenka@gmail.com: " + isValidEmail("zuelenka@gmail.com")); //true
     }
