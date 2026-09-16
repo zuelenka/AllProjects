@@ -22,9 +22,7 @@ public class MathUtils {
     // Ограничение числа диапазоном
     public static int clamp(int value, int low, int high) {
         if (low > high) { //если нижняя граница оказалась больше верхней
-            int temp = low; //пересохраняем во временную переменную низкую границу
-            low = high; //меняем местами переменные: теперь низкая = высокой
-            high = temp; //меняем местами переменные: теперь высокая равна временной (т.е. низкой)
+            throw new IllegalArgumentException("low > high: " + low + " > " + high);
         }
         if (value < low) { //если диапазонное значение ниже нижней границы
             return low;
@@ -38,9 +36,14 @@ public class MathUtils {
     public static void main(String[] args) {
         System.out.println("min(10, 7) = " + min(10, 7)); //7
         System.out.println("max(10, 7) = " + max(10, 7)); //10
-        System.out.println("clamp(10, 5, 0) = " + clamp(10, 5, 0)); // 5 (замета переменных)
         System.out.println("clamp(-3, 0, 5) = " + clamp(-3, 0, 5)); // 0
         System.out.println("clamp(10, 0, 5) = " + clamp(10, 0, 5)); // 5
         System.out.println("clamp(2, 0, 5) = " + clamp(2, 0, 5));   // 2
+        // Проверка ошибки
+        try {
+            System.out.println("clamp(10, 5, 0) = " + clamp(10, 5, 0));
+        } catch (IllegalArgumentException e) {
+            System.out.println("clamp(10, 5, 0): Ошибка: " + e.getMessage());
+        }
     }
 }
