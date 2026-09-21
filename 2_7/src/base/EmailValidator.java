@@ -20,15 +20,13 @@ public class EmailValidator {
         if (localPart.isEmpty() || domainPart.isEmpty()) { //если часть до @ или часть после @ содержит пустоту
             return false;
         }
-        String allowedLocal = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._%+-"; //часть до @ равна только допустимым символам
-        for (int i = 0; i < localPart.length(); i++) { //цикл, где i с 0, пока i меньше части до @
-            if (allowedLocal.indexOf(localPart.charAt(i)) == -1) //если текущий символ (charAt по i) в части до @ не найден в списке допустимых
-                return false;
+        //проверка localPart через regex
+        if (!localPart.matches("[a-zA-Z0-9._%+-]+")) {
+            return false;
         }
-        String allowedDomain = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-"; //часть после @ равна только допустимым символам
-        for (int i = 0; i < domainPart.length(); i++) { //цикл, где i с 0, пока i меньше части после @
-            if (allowedDomain.indexOf(domainPart.charAt(i)) == -1) //если текущий символ (charAt по i) в части после @ не найден в списке допустимых
-                return false;
+        //проверка domainPart через regex
+        if (!domainPart.matches("[a-zA-Z0-9.-]+")) {
+            return false;
         }
         //4) проверка на наличие в начале и в конце "-"
         if (localPart.startsWith("-") || localPart.endsWith("-") || //если часть до @ начинается с '-' или если часть до @ заканчивается на '-'
@@ -45,17 +43,14 @@ public class EmailValidator {
             return false;
         }
         //7) проверка наличия букв после "."
-        int lastDotIndex = email.lastIndexOf('.'); //находим последнюю точку
-        String domainPiece = email.substring(lastDotIndex + 1); //текстовая доменная часть=вырежи часть после последней точки — это TLD (com, ru, org)
-        if (domainPiece.length() < 2) { //если эта часть меньше 2
+        int lastDotIndex = email.lastIndexOf('.');
+        String domainPiece = email.substring(lastDotIndex + 1);
+        if (domainPiece.length() < 2) {
             return false;
         }
         //8) проверка на недопустимые символы после "."
-        String allowedDomainPiece = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; //часть TLD равна только допустимым символам
-        for (int i = 0; i < domainPiece.length(); i++) {
-            if (allowedDomainPiece.indexOf(domainPiece.charAt(i)) == -1) {
-                return false;
-            }
+        if (!domainPiece.matches("[a-zA-Z]+")) {
+            return false;
         }
         return true; //в остальных случаях адрес валидный
     }
