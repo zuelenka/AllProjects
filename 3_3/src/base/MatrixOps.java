@@ -3,13 +3,6 @@ package base;
 import java.util.Arrays; //импорт утилиты для работы с массивами
 
 public class MatrixOps {
-    /*1. Объявляем и выводим квадратную матрицу 4x4 с произвольными числами
-           int[][] matrix = {
-                {1, 2, 3, 4}, //строка 0
-                {5, 6, 7, 8}, //строка 1
-                {9, 10, 11, 12}, //строка 2
-                {13, 14, 15, 16} //строка 3
-        };*/
 
     //2. Вычисляем сумму всех элементов
     public static int summElements(int[][] matrix) {
@@ -21,20 +14,6 @@ public class MatrixOps {
         }
         return sum; //возвращаем sum
     }
-//ВНЕШНИЙ цикл (первая строка):
-// 1. sum=0; i=0<4-true-заходим во ВНУТРЕННИЙ for:
-//1.1 0<4; sum=sum0+matrix[0][0]=0+1=1; j=1;
-//1.2 1<4; sum=sum1+matrix[0][1]=1+2=3; j=2;
-//1.3 2<4; sum=sum3+matrix[0][2]=3+3=6; j=3;
-//1.4 3<4; sum=sum6+matrix[0][3]=6+4=10; j=4;
-//1.5 4<4-false-возврат во ВНЕШНИЙ цикл for; i=1
-// ВНЕШНИЙ цикл (вторая строка):
-//2. sum=10; i=1<4-true-заходим во ВНУТРЕННИЙ for:
-//2.1 0<4; sum=sum10+matrix[1][0]=10+5=15; j=1;
-//2.2 1<4; sum=sum15+matrix[1][1]=15+6=21; j=2;
-//2.3 2<4; sum=sum21+matrix[1][2]=21+7=28; j=3;
-//2.4 3<4; sum=sum28+matrix[1][3]=28+8=36; j=4;
-//2.5 4<4-false-возврат во ВНЕШНИЙ цикл for; i=2 и т.д.
 
     //3. Вычисляем сумму элементов главной диагонали (левый верхний — правый нижний)
     public static int sumMainDiagonal(int[][] matrix) {
@@ -44,8 +23,6 @@ public class MatrixOps {
         }
         return sum;
     }
-//1. sum=0; i=0<4-true; sum=sum+matrix[i][i]=0+[0]+[0]=0+1=1; i=1
-//2. sum=1; i=1<4-true; sum=sum+matrix[i][i]=1+[1]+[1]=1+6=7; i=2 и т.д.
 
     //4. Вычисляем сумму элементов побочной диагонали
     public static int sumSideDiagonal(int[][] matrix) {
@@ -56,8 +33,6 @@ public class MatrixOps {
         }
         return sum;
     }
-//1. sum=0; n=4 i=0<n=4-true; sum=sum+matrix[i][n-1-i]=0+[0]+[3]=0+4=4; i=1
-//2. sum=4; n=4 i=1<n=4-true; sum=sum+matrix[i][n-1-i]=4+[1]+[2]=4+7=11; i=2 и т.д.
 
     //5. Вычисляем максимальный элемент в каждой строке
     public static int[] maxElementInString(int[][] matrix) {
@@ -73,17 +48,6 @@ public class MatrixOps {
         }
         return maxsElements; //возвращаем массив максимумов
     }
-//ВНЕШНИЙ цикл (первая строка):
-//1. i=0; i=0<4-true; max=matrix[0][0]=1; заходим во ВНУТРЕННИЙ for:
-//1.1 j=1; j=1<4-true; matrix[0][1]=2>max=1; max=2; j=2;
-//1.2 j=2; j=2<4-true; matrix[0][2]=3>max=2; max=3; j=3;
-//1.3 j=3; j=3<4-true; matrix[0][3]=4>max=3; max=4; j=4;
-//1.4 j=4; j=4<4-false - возвращаемся во ВНЕШНИЙ for; i=1
-//2. i=1; i=1<4-true; max=matrix[1][0]=5; заходим во ВНУТРЕННИЙ for:
-//2.1 j=1; j=1<4-true; matrix[1][1]=6>max=5; max=6; j=2;
-//2.2 j=2; j=2<4-true; matrix[1][2]=7>max=6; max=7; j=3;
-//2.3 j=3; j=3<4-true; matrix[1][3]=8>max=7; max=8; j=4;
-//2.4 j=4; j=4<4-false - возвращаемся во ВНЕШНИЙ for; i=2 и т.д.
 
     //6. Выводим сумму каждого столбца
     public static int[] sumEveryСolumn(int[][] matrix) {
@@ -97,18 +61,6 @@ public class MatrixOps {
         }
         return sumsСolumns; //возвращаем массив сумм
     }
-//1. i=0; i=0<4-true; sum=0; заходим во ВНУТРЕННИЙ for:
-//1.1 j=0; j=0<4-true; sum=sum0+matrix[0][0]=0+1=1; j=1
-//1.2 j=1; j=1<4-true; sum=sum1+matrix[1][0]=1+5=6; j=2
-//1.3 j=2; j=2<4-true; sum=sum6+matrix[2][0]=6+9=15; j=3
-//1.4 j=3; j=3<4-true; sum=sum15+matrix[3][0]=15+13=28; j=4
-//1.5 j=4; j=4<4-false - возвращаемся во ВНЕШНИЙ for; i=1
-//2. i=1; i=1<4-true; sum=0; заходим во ВНУТРЕННИЙ for:
-//2.1 j=0; j=0<4-true; sum=sum0+matrix[0][1]=0+2=2; j=1
-//2.2 j=1; j=1<4-true; sum=sum2+matrix[1][1]=2+6=8; j=2
-//2.3 j=2; j=2<4-true; sum=sum8+matrix[2][1]=8+10=18; j=3
-//2.4 j=3; j=3<4-true; sum=sum18+matrix[3][1]=18+14=32; j=4
-//2.5 j=4; j=4<4-false - возвращаемся во ВНЕШНИЙ for; i=2 и т.д.
 
     //1. Объявляем и выводим квадратную матрицу 4x4 с произвольными числами
     public static void main(String[] args) {
