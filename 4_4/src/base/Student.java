@@ -1,3 +1,5 @@
+package base;
+
 import java.util.Objects; //Для equals, hash
 
 //Класс Student (name, age, email).
